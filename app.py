@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Permite peticiones desde tu app Android
 
 # Configuración de la base de datos SQLite
-DATABASE = '/home/mayorga/mysite/data/mantenimiento.db'
+DATABASE = 'data/mantenimiento.db'
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
