@@ -9,6 +9,8 @@ CORS(app)  # Permite peticiones desde tu app Android
 # Configuración de la base de datos SQLite
 DATABASE = 'data/mantenimiento.db'
 
+os.makedirs("data", exist_ok=True)
+
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row  # Para obtener diccionarios
@@ -81,7 +83,7 @@ def obtener_registros():
 
 @app.route('/api/eliminar/<int:id>', methods=['DELETE'])
 def eliminar(id):
-    conn = sqlite3.connect('mantenimiento.db')
+    conn = sqlite3.connect('data/mantenimiento.db')  # Usa la carpeta "data"
     cursor = conn.cursor()
     try:
         cursor.execute("DELETE FROM registros WHERE id = ?", (id,))
